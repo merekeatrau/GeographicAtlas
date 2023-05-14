@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class CountryTableCell: UITableViewCell {
     
@@ -153,6 +154,47 @@ class CountryTableCell: UITableViewCell {
         label.textColor = .systemGray
         return label
     }
+    
+    func configure(country: Country?) {
+        guard let country = country,
+            let population = country.population,
+            let area = country.area,
+            let name = country.name?.common,
+            let capitalArray = country.capital,
+            let currencies = country.currencies else {
+                return
+        }
+
+        let capitalString = capitalArray.joined(separator: ", ")
+
+        countryLabel.text = name
+        capitalLabel.text = capitalString
+
+        labels[0].text = "Population: \(formatNumber(population)) mln"
+        labels[1].text = "Area: \(formatNumber(Int(area))) mln km²"
+
+        let currencyList = currencies.compactMap { (key, currency) -> String? in
+            if let currencyName = currency.name, let currencySymbol = currency.symbol {
+                return "\(currencyName) (\(currencySymbol))"
+            }
+            return nil
+        }
+
+        labels[2].text = "Currencies: " + currencyList.joined(separator: ", ")
+
+        if let pngFlagUrlString = country.flags?.png,
+        let pngFlagUrl = URL(string: pngFlagUrlString) {
+            flagImageView.kf.setImage(with: pngFlagUrl)
+        } else if let svgFlagUrlString = country.flags?.svg,
+                let svgFlagUrl = URL(string: svgFlagUrlString) {
+            flagImageView.kf.setImage(with: svgFlagUrl)
+        }
+    }
+
+    func formatNumber(_ number: Int) -> String {
+        return String(format: "%.1f", Float(number) / 1000000)
+    }
+
 }
 
 

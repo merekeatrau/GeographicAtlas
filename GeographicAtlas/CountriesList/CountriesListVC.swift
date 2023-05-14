@@ -10,6 +10,10 @@ import SnapKit
 
 class CountriesListViewController: UIViewController {
     
+    let networkManager = CountriesNetworkService.shared
+    private var countries: [String: [Country]] = [:]
+    private var continents: [String] = []
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.separatorStyle = .none
@@ -25,6 +29,8 @@ class CountriesListViewController: UIViewController {
         view.backgroundColor = .white
         title = "World Countries"
         setTableview()
+        fetchCountries()
+        print(countries)
     }
     
     private func setTableview() {
@@ -39,8 +45,13 @@ class CountriesListViewController: UIViewController {
 }
 
 extension CountriesListViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return continents.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        let continent = continents[section]
+        return countries[continent]?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,23 +59,43 @@ extension CountriesListViewController: UITableViewDelegate, UITableViewDataSourc
             return UITableViewCell()
         }
         cell.layer.cornerRadius = 8
+        let continent = continents[indexPath.section]
+        if let country = countries[continent]?[indexPath.row] {
+            cell.configure(country: country)
+        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ContinentHeaderView") as? ContinentHeaderView
-            ?? ContinentHeaderView(reuseIdentifier: "ContinentHeaderView")
-        headerView.configure(with: "ASIA")
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ContinentHeaderView") as? ContinentHeaderView ?? ContinentHeaderView(reuseIdentifier: "ContinentHeaderView")
+        let continent = continents[section]
+        headerView.configure(with: continent)
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 18
+        return 30
     }
     
+}
+
+extension CountriesListViewController {
+    private func fetchCountries() {
+        networkManager.getAllCountries { [weak self] countriesData in
+            for country in countriesData {
+                if let continent = country.continents?.first {
+                    if self?.countries[continent] != nil {
+                        self?.countries[continent]?.append(country)
+                    } else {
+                        self?.countries[continent] = [country]
+                        self?.continents.append(continent)
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+    }
 }
 

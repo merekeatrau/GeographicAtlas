@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 
 class ContinentHeaderView: UITableViewHeaderFooterView {
+    
+    static let identifier = "ContinentHeaderView"
+    
     private let label: UILabel = {
         let label = UILabel()
         label.textColor = .systemGray
@@ -37,7 +40,8 @@ class ContinentHeaderView: UITableViewHeaderFooterView {
     }
     
     func configure(with title: String) {
-        let attributedString = NSAttributedString(string: title, attributes: [NSAttributedString.Key.kern: 1.2])
+        let uppercasedTitle = title.uppercased()
+        let attributedString = NSAttributedString(string: uppercasedTitle, attributes: [NSAttributedString.Key.kern: 1.2])
         label.attributedText = attributedString
     }
 }

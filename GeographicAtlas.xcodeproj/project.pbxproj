@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		622F5EB92A109F710040ABDB /* CountriesNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622F5EB82A109F710040ABDB /* CountriesNetworkService.swift */; };
 		62EFD8D92A0F9702001941BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8D82A0F9702001941BD /* AppDelegate.swift */; };
 		62EFD8DB2A0F9702001941BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8DA2A0F9702001941BD /* SceneDelegate.swift */; };
 		62EFD8DD2A0F9702001941BD /* CountriesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8DC2A0F9702001941BD /* CountriesListVC.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		622F5EB82A109F710040ABDB /* CountriesNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesNetworkService.swift; sourceTree = "<group>"; };
 		62EFD8D52A0F9702001941BD /* GeographicAtlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeographicAtlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62EFD8D82A0F9702001941BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62EFD8DA2A0F9702001941BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		622F5EBA2A10A0510040ABDB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				622F5EB82A109F710040ABDB /* CountriesNetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		62EFD8CC2A0F9702001941BD = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +122,7 @@
 				62EFD9122A0F9CAB001941BD /* Application */,
 				62EFD9182A0FAB22001941BD /* Model */,
 				62EFD9132A0F9FB6001941BD /* CountriesList */,
+				622F5EBA2A10A0510040ABDB /* Services */,
 				62EFD9112A0F9C80001941BD /* SupportingFiles */,
 			);
 			path = GeographicAtlas;
@@ -317,6 +328,7 @@
 				62EFD8D92A0F9702001941BD /* AppDelegate.swift in Sources */,
 				62EFD8DB2A0F9702001941BD /* SceneDelegate.swift in Sources */,
 				62EFD9172A0FA77B001941BD /* CountryTableCell.swift in Sources */,
+				622F5EB92A109F710040ABDB /* CountriesNetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
