@@ -1,0 +1,698 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		62EFD8D92A0F9702001941BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8D82A0F9702001941BD /* AppDelegate.swift */; };
+		62EFD8DB2A0F9702001941BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8DA2A0F9702001941BD /* SceneDelegate.swift */; };
+		62EFD8DD2A0F9702001941BD /* CountriesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8DC2A0F9702001941BD /* CountriesListVC.swift */; };
+		62EFD8E22A0F9703001941BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62EFD8E12A0F9703001941BD /* Assets.xcassets */; };
+		62EFD8E52A0F9703001941BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62EFD8E32A0F9703001941BD /* LaunchScreen.storyboard */; };
+		62EFD8F02A0F9703001941BD /* GeographicAtlasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8EF2A0F9703001941BD /* GeographicAtlasTests.swift */; };
+		62EFD8FA2A0F9703001941BD /* GeographicAtlasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8F92A0F9703001941BD /* GeographicAtlasUITests.swift */; };
+		62EFD8FC2A0F9703001941BD /* GeographicAtlasUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8FB2A0F9703001941BD /* GeographicAtlasUITestsLaunchTests.swift */; };
+		62EFD90A2A0F97C6001941BD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 62EFD9092A0F97C6001941BD /* Alamofire */; };
+		62EFD90D2A0F97DD001941BD /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 62EFD90C2A0F97DD001941BD /* SnapKit */; };
+		62EFD9102A0F990F001941BD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 62EFD90F2A0F990F001941BD /* Kingfisher */; };
+		62EFD9152A0FA005001941BD /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD9142A0FA005001941BD /* Country.swift */; };
+		62EFD9172A0FA77B001941BD /* CountryTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD9162A0FA77B001941BD /* CountryTableCell.swift */; };
+		62EFD91A2A0FFC42001941BD /* ContinentHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD9192A0FFC42001941BD /* ContinentHeaderView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62EFD8EC2A0F9703001941BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62EFD8CD2A0F9702001941BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62EFD8D42A0F9702001941BD;
+			remoteInfo = GeographicAtlas;
+		};
+		62EFD8F62A0F9703001941BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62EFD8CD2A0F9702001941BD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62EFD8D42A0F9702001941BD;
+			remoteInfo = GeographicAtlas;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		62EFD8D52A0F9702001941BD /* GeographicAtlas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeographicAtlas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		62EFD8D82A0F9702001941BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		62EFD8DA2A0F9702001941BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		62EFD8DC2A0F9702001941BD /* CountriesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListVC.swift; sourceTree = "<group>"; };
+		62EFD8E12A0F9703001941BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62EFD8E42A0F9703001941BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62EFD8E62A0F9703001941BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62EFD8EB2A0F9703001941BD /* GeographicAtlasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeographicAtlasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62EFD8EF2A0F9703001941BD /* GeographicAtlasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeographicAtlasTests.swift; sourceTree = "<group>"; };
+		62EFD8F52A0F9703001941BD /* GeographicAtlasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeographicAtlasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		62EFD8F92A0F9703001941BD /* GeographicAtlasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeographicAtlasUITests.swift; sourceTree = "<group>"; };
+		62EFD8FB2A0F9703001941BD /* GeographicAtlasUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeographicAtlasUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		62EFD9142A0FA005001941BD /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		62EFD9162A0FA77B001941BD /* CountryTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableCell.swift; sourceTree = "<group>"; };
+		62EFD9192A0FFC42001941BD /* ContinentHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinentHeaderView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		62EFD8D22A0F9702001941BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62EFD9102A0F990F001941BD /* Kingfisher in Frameworks */,
+				62EFD90A2A0F97C6001941BD /* Alamofire in Frameworks */,
+				62EFD90D2A0F97DD001941BD /* SnapKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62EFD8E82A0F9703001941BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62EFD8F22A0F9703001941BD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		62EFD8CC2A0F9702001941BD = {
+			isa = PBXGroup;
+			children = (
+				62EFD8D72A0F9702001941BD /* GeographicAtlas */,
+				62EFD8EE2A0F9703001941BD /* GeographicAtlasTests */,
+				62EFD8F82A0F9703001941BD /* GeographicAtlasUITests */,
+				62EFD8D62A0F9702001941BD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		62EFD8D62A0F9702001941BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				62EFD8D52A0F9702001941BD /* GeographicAtlas.app */,
+				62EFD8EB2A0F9703001941BD /* GeographicAtlasTests.xctest */,
+				62EFD8F52A0F9703001941BD /* GeographicAtlasUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		62EFD8D72A0F9702001941BD /* GeographicAtlas */ = {
+			isa = PBXGroup;
+			children = (
+				62EFD9122A0F9CAB001941BD /* Application */,
+				62EFD9182A0FAB22001941BD /* Model */,
+				62EFD9132A0F9FB6001941BD /* CountriesList */,
+				62EFD9112A0F9C80001941BD /* SupportingFiles */,
+			);
+			path = GeographicAtlas;
+			sourceTree = "<group>";
+		};
+		62EFD8EE2A0F9703001941BD /* GeographicAtlasTests */ = {
+			isa = PBXGroup;
+			children = (
+				62EFD8EF2A0F9703001941BD /* GeographicAtlasTests.swift */,
+			);
+			path = GeographicAtlasTests;
+			sourceTree = "<group>";
+		};
+		62EFD8F82A0F9703001941BD /* GeographicAtlasUITests */ = {
+			isa = PBXGroup;
+			children = (
+				62EFD8F92A0F9703001941BD /* GeographicAtlasUITests.swift */,
+				62EFD8FB2A0F9703001941BD /* GeographicAtlasUITestsLaunchTests.swift */,
+			);
+			path = GeographicAtlasUITests;
+			sourceTree = "<group>";
+		};
+		62EFD9112A0F9C80001941BD /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				62EFD8E62A0F9703001941BD /* Info.plist */,
+				62EFD8E12A0F9703001941BD /* Assets.xcassets */,
+				62EFD8E32A0F9703001941BD /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		62EFD9122A0F9CAB001941BD /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				62EFD8D82A0F9702001941BD /* AppDelegate.swift */,
+				62EFD8DA2A0F9702001941BD /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		62EFD9132A0F9FB6001941BD /* CountriesList */ = {
+			isa = PBXGroup;
+			children = (
+				62EFD8DC2A0F9702001941BD /* CountriesListVC.swift */,
+				62EFD9162A0FA77B001941BD /* CountryTableCell.swift */,
+				62EFD9192A0FFC42001941BD /* ContinentHeaderView.swift */,
+			);
+			path = CountriesList;
+			sourceTree = "<group>";
+		};
+		62EFD9182A0FAB22001941BD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				62EFD9142A0FA005001941BD /* Country.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		62EFD8D42A0F9702001941BD /* GeographicAtlas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62EFD8FF2A0F9703001941BD /* Build configuration list for PBXNativeTarget "GeographicAtlas" */;
+			buildPhases = (
+				62EFD8D12A0F9702001941BD /* Sources */,
+				62EFD8D22A0F9702001941BD /* Frameworks */,
+				62EFD8D32A0F9702001941BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GeographicAtlas;
+			packageProductDependencies = (
+				62EFD9092A0F97C6001941BD /* Alamofire */,
+				62EFD90C2A0F97DD001941BD /* SnapKit */,
+				62EFD90F2A0F990F001941BD /* Kingfisher */,
+			);
+			productName = GeographicAtlas;
+			productReference = 62EFD8D52A0F9702001941BD /* GeographicAtlas.app */;
+			productType = "com.apple.product-type.application";
+		};
+		62EFD8EA2A0F9703001941BD /* GeographicAtlasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62EFD9022A0F9703001941BD /* Build configuration list for PBXNativeTarget "GeographicAtlasTests" */;
+			buildPhases = (
+				62EFD8E72A0F9703001941BD /* Sources */,
+				62EFD8E82A0F9703001941BD /* Frameworks */,
+				62EFD8E92A0F9703001941BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62EFD8ED2A0F9703001941BD /* PBXTargetDependency */,
+			);
+			name = GeographicAtlasTests;
+			productName = GeographicAtlasTests;
+			productReference = 62EFD8EB2A0F9703001941BD /* GeographicAtlasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		62EFD8F42A0F9703001941BD /* GeographicAtlasUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62EFD9052A0F9703001941BD /* Build configuration list for PBXNativeTarget "GeographicAtlasUITests" */;
+			buildPhases = (
+				62EFD8F12A0F9703001941BD /* Sources */,
+				62EFD8F22A0F9703001941BD /* Frameworks */,
+				62EFD8F32A0F9703001941BD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62EFD8F72A0F9703001941BD /* PBXTargetDependency */,
+			);
+			name = GeographicAtlasUITests;
+			productName = GeographicAtlasUITests;
+			productReference = 62EFD8F52A0F9703001941BD /* GeographicAtlasUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		62EFD8CD2A0F9702001941BD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					62EFD8D42A0F9702001941BD = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					62EFD8EA2A0F9703001941BD = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 62EFD8D42A0F9702001941BD;
+					};
+					62EFD8F42A0F9703001941BD = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 62EFD8D42A0F9702001941BD;
+					};
+				};
+			};
+			buildConfigurationList = 62EFD8D02A0F9702001941BD /* Build configuration list for PBXProject "GeographicAtlas" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 62EFD8CC2A0F9702001941BD;
+			packageReferences = (
+				62EFD9082A0F97C6001941BD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				62EFD90B2A0F97DD001941BD /* XCRemoteSwiftPackageReference "SnapKit" */,
+				62EFD90E2A0F990F001941BD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
+			productRefGroup = 62EFD8D62A0F9702001941BD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				62EFD8D42A0F9702001941BD /* GeographicAtlas */,
+				62EFD8EA2A0F9703001941BD /* GeographicAtlasTests */,
+				62EFD8F42A0F9703001941BD /* GeographicAtlasUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		62EFD8D32A0F9702001941BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62EFD8E52A0F9703001941BD /* LaunchScreen.storyboard in Resources */,
+				62EFD8E22A0F9703001941BD /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62EFD8E92A0F9703001941BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62EFD8F32A0F9703001941BD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		62EFD8D12A0F9702001941BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62EFD9152A0FA005001941BD /* Country.swift in Sources */,
+				62EFD8DD2A0F9702001941BD /* CountriesListVC.swift in Sources */,
+				62EFD91A2A0FFC42001941BD /* ContinentHeaderView.swift in Sources */,
+				62EFD8D92A0F9702001941BD /* AppDelegate.swift in Sources */,
+				62EFD8DB2A0F9702001941BD /* SceneDelegate.swift in Sources */,
+				62EFD9172A0FA77B001941BD /* CountryTableCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62EFD8E72A0F9703001941BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62EFD8F02A0F9703001941BD /* GeographicAtlasTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62EFD8F12A0F9703001941BD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62EFD8FA2A0F9703001941BD /* GeographicAtlasUITests.swift in Sources */,
+				62EFD8FC2A0F9703001941BD /* GeographicAtlasUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62EFD8ED2A0F9703001941BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62EFD8D42A0F9702001941BD /* GeographicAtlas */;
+			targetProxy = 62EFD8EC2A0F9703001941BD /* PBXContainerItemProxy */;
+		};
+		62EFD8F72A0F9703001941BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62EFD8D42A0F9702001941BD /* GeographicAtlas */;
+			targetProxy = 62EFD8F62A0F9703001941BD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		62EFD8E32A0F9703001941BD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				62EFD8E42A0F9703001941BD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		62EFD8FD2A0F9703001941BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		62EFD8FE2A0F9703001941BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		62EFD9002A0F9703001941BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PD2C9D7H2A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GeographicAtlas/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mereke.GeographicAtlas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		62EFD9012A0F9703001941BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PD2C9D7H2A;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GeographicAtlas/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mereke.GeographicAtlas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		62EFD9032A0F9703001941BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PD2C9D7H2A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mereke.GeographicAtlasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeographicAtlas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GeographicAtlas";
+			};
+			name = Debug;
+		};
+		62EFD9042A0F9703001941BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PD2C9D7H2A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mereke.GeographicAtlasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeographicAtlas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GeographicAtlas";
+			};
+			name = Release;
+		};
+		62EFD9062A0F9703001941BD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PD2C9D7H2A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mereke.GeographicAtlasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GeographicAtlas;
+			};
+			name = Debug;
+		};
+		62EFD9072A0F9703001941BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PD2C9D7H2A;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mereke.GeographicAtlasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = GeographicAtlas;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		62EFD8D02A0F9702001941BD /* Build configuration list for PBXProject "GeographicAtlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62EFD8FD2A0F9703001941BD /* Debug */,
+				62EFD8FE2A0F9703001941BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62EFD8FF2A0F9703001941BD /* Build configuration list for PBXNativeTarget "GeographicAtlas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62EFD9002A0F9703001941BD /* Debug */,
+				62EFD9012A0F9703001941BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62EFD9022A0F9703001941BD /* Build configuration list for PBXNativeTarget "GeographicAtlasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62EFD9032A0F9703001941BD /* Debug */,
+				62EFD9042A0F9703001941BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62EFD9052A0F9703001941BD /* Build configuration list for PBXNativeTarget "GeographicAtlasUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62EFD9062A0F9703001941BD /* Debug */,
+				62EFD9072A0F9703001941BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		62EFD9082A0F97C6001941BD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.7.1;
+			};
+		};
+		62EFD90B2A0F97DD001941BD /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 5.6.0;
+			};
+		};
+		62EFD90E2A0F990F001941BD /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = exactVersion;
+				version = 7.6.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		62EFD9092A0F97C6001941BD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62EFD9082A0F97C6001941BD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		62EFD90C2A0F97DD001941BD /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62EFD90B2A0F97DD001941BD /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		62EFD90F2A0F990F001941BD /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 62EFD90E2A0F990F001941BD /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 62EFD8CD2A0F9702001941BD /* Project object */;
+}
