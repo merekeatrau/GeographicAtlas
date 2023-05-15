@@ -10,7 +10,7 @@ import SnapKit
 
 class CountriesListViewController: UIViewController {
     
-    let networkManager = CountriesNetworkService.shared
+    private let networkManager = CountriesNetworkService.shared
     private var countries: [String: [Country]] = [:]
     private var continents: [String] = []
     
@@ -30,7 +30,7 @@ class CountriesListViewController: UIViewController {
         title = "World Countries"
         setTableview()
         fetchCountries()
-        print(countries)
+        self.navigationItem.backButtonTitle = ""
     }
     
     private func setTableview() {
@@ -66,6 +66,15 @@ extension CountriesListViewController: UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let continent = continents[indexPath.section]
+        if let country = countries[continent]?[indexPath.row] {
+            let CountryDetailsVC = CountryDetailsViewController(countryCode: country.countryCode ?? "KZ")
+            CountryDetailsVC.title = country.name?.common
+            navigationController?.pushViewController(CountryDetailsVC, animated: true)
+        }
+    }
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ContinentHeaderView") as? ContinentHeaderView ?? ContinentHeaderView(reuseIdentifier: "ContinentHeaderView")
         let continent = continents[section]

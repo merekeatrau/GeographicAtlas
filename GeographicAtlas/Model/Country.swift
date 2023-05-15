@@ -10,6 +10,7 @@ import UIKit
 
 struct Country: Decodable {
     var name: CountryName?
+    var countryCode: String?
     var capital: [String]?
     var population: Int?
     var flags: Flags?
@@ -19,6 +20,7 @@ struct Country: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case name
+        case cca2
         case capital
         case population
         case flags
@@ -29,8 +31,8 @@ struct Country: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
         name = try container.decodeIfPresent(CountryName.self, forKey: .name)
+        countryCode = try container.decodeIfPresent(String.self, forKey: .cca2)
         capital = try container.decodeIfPresent([String].self, forKey: .capital)
         population = try container.decodeIfPresent(Int.self, forKey: .population)
         flags = try container.decodeIfPresent(Flags.self, forKey: .flags)

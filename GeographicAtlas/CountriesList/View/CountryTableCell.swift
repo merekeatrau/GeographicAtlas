@@ -190,11 +190,6 @@ class CountryTableCell: UITableViewCell {
             flagImageView.kf.setImage(with: svgFlagUrl)
         }
     }
-
-    func formatNumber(_ number: Int) -> String {
-        return String(format: "%.1f", Float(number) / 1000000)
-    }
-
 }
 
 

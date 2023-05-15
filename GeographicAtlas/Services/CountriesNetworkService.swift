@@ -19,9 +19,6 @@ class CountriesNetworkService {
         let url = "\(baseUrl)/all"
         
         AF.request(url).responseDecodable(of: [Country].self) { response in
-            if let data = response.data {
-                print(String(data: data, encoding: .utf8) ?? nil)
-            }
             switch response.result {
             case .success(let countries):
                 completion(countries)
