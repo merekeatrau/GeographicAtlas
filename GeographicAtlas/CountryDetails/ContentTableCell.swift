@@ -49,7 +49,6 @@ class ContentTableCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         selectionStyle = .none
         setupViews()
         setConstraints()
@@ -61,12 +60,8 @@ class ContentTableCell: UITableViewCell {
     
     private func setupViews() {
         contentView.addSubview(mainStackView)
-        
-        textStackView.addArrangedSubview(titleLabel)
-        textStackView.addArrangedSubview(captionLabel)
-        
-        mainStackView.addArrangedSubview(iconImageView)
-        mainStackView.addArrangedSubview(textStackView)
+        [titleLabel, captionLabel].forEach { textStackView.addArrangedSubview($0) }
+        [iconImageView, textStackView].forEach { mainStackView.addArrangedSubview($0) }
     }
     
     private func setConstraints() {

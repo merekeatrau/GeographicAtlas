@@ -13,6 +13,14 @@ class CountryTableCell: UITableViewCell {
     
     static let identifier = "CountryTableCell"
     
+    var onLearnMoreTapped: (() -> Void)?
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        isExpanded = false
+        updateView()
+    }
+    
     var isExpanded: Bool = false
     
     private let mainContainer: UIView = {
@@ -22,45 +30,14 @@ class CountryTableCell: UITableViewCell {
         return view
     }()
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        isExpanded = false
-    }
+    private lazy var mainStackView = createStackView(axis: .vertical, spacing: 12, alignment: .fill)
+    private lazy var textStackView = createStackView(axis: .vertical, spacing: 4, alignment: .leading)
+    private lazy var headStackView = createStackView(axis: .horizontal, spacing: 12, alignment: .center)
+    private lazy var additionalStackView = createStackView(axis: .vertical, spacing: 8, alignment: .leading)
     
-    private let mainStackView: UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.spacing = 12
-        stackview.backgroundColor = .systemGray6
-        return stackview
-    }()
-    
-    private let textStackView: UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.alignment = .leading
-        stackview.spacing = 4
-        return stackview
-    }()
-    
-    private let headStackView: UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .horizontal
-        stackview.alignment = .center
-        stackview.spacing = 12
-        return stackview
-    }()
-    
-    private let additionalStackView: UIStackView = {
-        let stackview = UIStackView()
-        stackview.axis = .vertical
-        stackview.alignment = .leading
-        stackview.spacing = 8
-        return stackview
-    }()
     
     private let flagImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "Flag"))
+        let imageView = UIImageView()
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.snp.makeConstraints {
@@ -72,14 +49,12 @@ class CountryTableCell: UITableViewCell {
     
     private let countryLabel: UILabel = {
         let label = UILabel()
-        label.text = "Kazakhstan"
         label.font = .systemFont(ofSize: 17, weight: .semibold)
         return label
     }()
     
     private let capitalLabel: UILabel = {
         let label = UILabel()
-        label.text = "Astana"
         label.font = .systemFont(ofSize: 13, weight: .regular)
         label.textColor = .systemGray
         return label
@@ -92,19 +67,20 @@ class CountryTableCell: UITableViewCell {
         return button
     }()
     
-    private let learnMoreButton: UIButton = {
+    let learnMoreButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Learn More", for: .normal)
         button.tintColor = .systemBlue
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         button.contentEdgeInsets = UIEdgeInsets(top: 14, left: 14, bottom: 14, right: 14)
+        button.addTarget(self, action: #selector(learnMoreTapped), for: .touchUpInside)
         return button
     }()
     
     lazy private var labels: [UILabel] = [
-        createLabel(text: "Population: 19 mln"),
-        createLabel(text: "Area: 2.725 mln km²"),
-        createLabel(text: "Currencies: Tenge (₸) (KZT)")]
+        createLabel(text: ""),
+        createLabel(text: ""),
+        createLabel(text: "")]
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -123,17 +99,13 @@ class CountryTableCell: UITableViewCell {
     private func setupViews() {
         contentView.addSubview(mainContainer)
         mainContainer.addSubview(mainStackView)
-        textStackView.addArrangedSubview(countryLabel)
-        textStackView.addArrangedSubview(capitalLabel)
-        headStackView.addArrangedSubview(flagImageView)
-        headStackView.addArrangedSubview(textStackView)
-        headStackView.addArrangedSubview(expandButton)
-        for label in labels {
-            additionalStackView.addArrangedSubview(label)
-        }
-        mainStackView.addArrangedSubview(headStackView)
-        mainStackView.addArrangedSubview(additionalStackView)
-        mainStackView.addArrangedSubview(learnMoreButton)
+        [countryLabel, capitalLabel].forEach { textStackView.addArrangedSubview($0) }
+        [flagImageView, textStackView, expandButton].forEach { headStackView.addArrangedSubview($0) }
+        labels.forEach { additionalStackView.addArrangedSubview($0) }
+        [headStackView, additionalStackView, learnMoreButton].forEach { mainStackView.addArrangedSubview($0) }
+        
+        additionalStackView.isHidden = true
+        learnMoreButton.isHidden = true
     }
     
     private func setupConstraints() {
@@ -147,6 +119,12 @@ class CountryTableCell: UITableViewCell {
         }
     }
     
+    @objc private func learnMoreTapped() {
+        onLearnMoreTapped?()
+    }
+}
+
+extension CountryTableCell {
     private func createLabel(text: String) -> UILabel {
         let label = UILabel()
         label.text = text
@@ -155,40 +133,48 @@ class CountryTableCell: UITableViewCell {
         return label
     }
     
+    private func createStackView(axis: NSLayoutConstraint.Axis, spacing: CGFloat, alignment: UIStackView.Alignment = .fill) -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = axis
+        stackView.spacing = spacing
+        stackView.alignment = alignment
+        return stackView
+    }
+    
     func configure(country: Country?) {
-        guard let country = country,
-            let population = country.population,
-            let area = country.area,
-            let name = country.name?.common,
-            let capitalArray = country.capital,
-            let currencies = country.currencies else {
-                return
-        }
-
-        let capitalString = capitalArray.joined(separator: ", ")
-
-        countryLabel.text = name
-        capitalLabel.text = capitalString
-
-        labels[0].text = "Population: \(formatNumber(population)) mln"
-        labels[1].text = "Area: \(formatNumber(Int(area))) mln km²"
-
-        let currencyList = currencies.compactMap { (key, currency) -> String? in
+        guard let country = country else { return }
+        
+        let name = country.name?.common ?? "N/A"
+        let capitalString = country.capital?.joined(separator: ", ") ?? "N/A"
+        let population = country.population != nil ? formatNumber(country.population!) + " mln" : "N/A"
+        let area = country.area != nil ? formatNumber(Int(country.area!)) + " mln km²" : "N/A"
+        
+        let currencyList = country.currencies?.compactMap { (key, currency) -> String? in
             if let currencyName = currency.name, let currencySymbol = currency.symbol {
                 return "\(currencyName) (\(currencySymbol))"
             }
             return nil
-        }
-
-        labels[2].text = "Currencies: " + currencyList.joined(separator: ", ")
-
+        }.joined(separator: ", ") ?? "N/A"
+        
+        countryLabel.text = name
+        capitalLabel.text = capitalString
+        labels[0].text = "Population: \(population)"
+        labels[1].text = "Area: \(area)"
+        labels[2].text = "Currencies: \(currencyList)"
+        
         if let pngFlagUrlString = country.flags?.png,
-        let pngFlagUrl = URL(string: pngFlagUrlString) {
+           let pngFlagUrl = URL(string: pngFlagUrlString) {
             flagImageView.kf.setImage(with: pngFlagUrl)
         } else if let svgFlagUrlString = country.flags?.svg,
-                let svgFlagUrl = URL(string: svgFlagUrlString) {
+                  let svgFlagUrl = URL(string: svgFlagUrlString) {
             flagImageView.kf.setImage(with: svgFlagUrl)
         }
+    }
+    
+    func updateView() {
+        additionalStackView.isHidden = !isExpanded
+        learnMoreButton.isHidden = !isExpanded
+        expandButton.setImage(UIImage(named: isExpanded ? "arrow_down" : "arrow_up"), for: .normal)
     }
 }
 

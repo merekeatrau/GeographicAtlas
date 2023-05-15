@@ -21,3 +21,13 @@ func formatArea(_ number: Double?) -> String {
     }
     return formatter.string(from: NSNumber(value: number)) ?? "0"
 }
+
+func formatCoordinates(lat: Double, lng: Double) -> String {
+    let latDegrees = Int(lat)
+    let latMinutes = Int((lat - Double(latDegrees)) * 60)
+    
+    let lngDegrees = Int(lng)
+    let lngMinutes = Int((lng - Double(lngDegrees)) * 60)
+    
+    return "\(latDegrees)°\(latMinutes)', \(lngDegrees)°\(lngMinutes)'"
+}
