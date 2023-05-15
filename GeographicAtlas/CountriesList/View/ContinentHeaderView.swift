@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class ContinentHeaderView: UITableViewHeaderFooterView {
     
@@ -19,19 +20,34 @@ class ContinentHeaderView: UITableViewHeaderFooterView {
         return label
     }()
     
+    private let container: UIView = {
+        let view = UIView()
+        view.isSkeletonable = true
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        return view
+    }()
+    
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        isSkeletonable = true
         setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        isSkeletonable = true
         setupViews()
     }
     
     private func setupViews() {
         contentView.backgroundColor = .clear
-        contentView.addSubview(label)
+        contentView.addSubview(container)
+        container.addSubview(label)
+        container.snp.makeConstraints {
+            $0.trailing.leading.equalToSuperview().inset(20)
+            $0.top.bottom.equalToSuperview().inset(0)
+        }
         
         label.snp.makeConstraints {
             $0.leading.equalToSuperview().offset(20)

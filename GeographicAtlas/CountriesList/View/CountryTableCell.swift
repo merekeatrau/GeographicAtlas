@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import SkeletonView
 
 class CountryTableCell: UITableViewCell {
     
@@ -35,7 +36,6 @@ class CountryTableCell: UITableViewCell {
     private lazy var headStackView = createStackView(axis: .horizontal, spacing: 12, alignment: .center)
     private lazy var additionalStackView = createStackView(axis: .vertical, spacing: 8, alignment: .leading)
     
-    
     private let flagImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
@@ -49,12 +49,16 @@ class CountryTableCell: UITableViewCell {
     
     private let countryLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 1
+        label.text = "KazakhstanKazakhstanKazakhstan"
         label.font = .systemFont(ofSize: 17, weight: .semibold)
         return label
     }()
     
     private let capitalLabel: UILabel = {
         let label = UILabel()
+        label.numberOfLines = 1
+        label.text = "KazakhstanKazakhstan"
         label.font = .systemFont(ofSize: 13, weight: .regular)
         label.textColor = .systemGray
         return label
@@ -63,7 +67,7 @@ class CountryTableCell: UITableViewCell {
     private let expandButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "arrow_up"), for: .normal)
-        button.tintColor = .black
+        button.tintColor = .systemGray6
         return button
     }()
     
@@ -88,12 +92,30 @@ class CountryTableCell: UITableViewCell {
         contentView.layer.cornerRadius = 12
         contentView.layer.masksToBounds = true
         selectionStyle = .none
+        expandButton.isHidden = true
         setupViews()
         setupConstraints()
+        setupSkeletonable()
+        expandButton.isHidden = false
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupSkeletonable() {
+        isSkeletonable = true
+        mainContainer.isSkeletonable = true
+        mainStackView.isSkeletonable = true
+        headStackView.isSkeletonable = true
+        textStackView.isSkeletonable = true
+        flagImageView.isSkeletonable = true
+        expandButton.isSkeletonable = true
+        capitalLabel.isSkeletonable = true
+        countryLabel.isSkeletonable = true
+        
+        additionalStackView.isSkeletonable = false
+        learnMoreButton.isSkeletonable = false
     }
     
     private func setupViews() {
@@ -103,7 +125,6 @@ class CountryTableCell: UITableViewCell {
         [flagImageView, textStackView, expandButton].forEach { headStackView.addArrangedSubview($0) }
         labels.forEach { additionalStackView.addArrangedSubview($0) }
         [headStackView, additionalStackView, learnMoreButton].forEach { mainStackView.addArrangedSubview($0) }
-        
         additionalStackView.isHidden = true
         learnMoreButton.isHidden = true
     }
@@ -130,6 +151,7 @@ extension CountryTableCell {
         label.text = text
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textColor = .systemGray
+        label.numberOfLines = 1
         return label
     }
     
@@ -169,6 +191,7 @@ extension CountryTableCell {
                   let svgFlagUrl = URL(string: svgFlagUrlString) {
             flagImageView.kf.setImage(with: svgFlagUrl)
         }
+        expandButton.tintColor = .black
     }
     
     func updateView() {
@@ -177,5 +200,3 @@ extension CountryTableCell {
         expandButton.setImage(UIImage(named: isExpanded ? "arrow_down" : "arrow_up"), for: .normal)
     }
 }
-
-

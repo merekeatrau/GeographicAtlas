@@ -12,7 +12,7 @@ class CountryDetailsViewController: UIViewController {
     private let networkManager = CountryDetailsNetworkService.shared
     
     var countryCode: String
-    
+        
     private var details: CountryDetails? {
         didSet {
             detailsDict = details?.detailsDict ?? [:]

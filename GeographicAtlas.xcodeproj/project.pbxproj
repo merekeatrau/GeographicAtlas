@@ -15,6 +15,7 @@
 		628FEAB02A113DB700321754 /* CountryDetailsNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628FEAAF2A113DB700321754 /* CountryDetailsNetworkService.swift */; };
 		6298753B2A11F41000DF8FFF /* FormatFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6298753A2A11F41000DF8FFF /* FormatFunctions.swift */; };
 		6298753D2A12436900DF8FFF /* CountriesByContinent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6298753C2A12436900DF8FFF /* CountriesByContinent.swift */; };
+		629875402A124E7E00DF8FFF /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 6298753F2A124E7E00DF8FFF /* SkeletonView */; };
 		62EFD8D92A0F9702001941BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8D82A0F9702001941BD /* AppDelegate.swift */; };
 		62EFD8DB2A0F9702001941BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8DA2A0F9702001941BD /* SceneDelegate.swift */; };
 		62EFD8DD2A0F9702001941BD /* CountriesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFD8DC2A0F9702001941BD /* CountriesListVC.swift */; };
@@ -79,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				629875402A124E7E00DF8FFF /* SkeletonView in Frameworks */,
 				62EFD9102A0F990F001941BD /* Kingfisher in Frameworks */,
 				62EFD90A2A0F97C6001941BD /* Alamofire in Frameworks */,
 				62EFD90D2A0F97DD001941BD /* SnapKit in Frameworks */,
@@ -239,6 +241,7 @@
 				62EFD9092A0F97C6001941BD /* Alamofire */,
 				62EFD90C2A0F97DD001941BD /* SnapKit */,
 				62EFD90F2A0F990F001941BD /* Kingfisher */,
+				6298753F2A124E7E00DF8FFF /* SkeletonView */,
 			);
 			productName = GeographicAtlas;
 			productReference = 62EFD8D52A0F9702001941BD /* GeographicAtlas.app */;
@@ -316,6 +319,7 @@
 				62EFD9082A0F97C6001941BD /* XCRemoteSwiftPackageReference "Alamofire" */,
 				62EFD90B2A0F97DD001941BD /* XCRemoteSwiftPackageReference "SnapKit" */,
 				62EFD90E2A0F990F001941BD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				6298753E2A124E7E00DF8FFF /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = 62EFD8D62A0F9702001941BD /* Products */;
 			projectDirPath = "";
@@ -706,6 +710,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6298753E2A124E7E00DF8FFF /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		62EFD9082A0F97C6001941BD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -733,6 +745,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6298753F2A124E7E00DF8FFF /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6298753E2A124E7E00DF8FFF /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
 		62EFD9092A0F97C6001941BD /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 62EFD9082A0F97C6001941BD /* XCRemoteSwiftPackageReference "Alamofire" */;

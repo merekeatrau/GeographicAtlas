@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import SkeletonView
 
 class CountriesListViewController: UIViewController {
     
@@ -17,12 +18,15 @@ class CountriesListViewController: UIViewController {
         let tableView = UITableView()
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 216
+        tableView.sectionHeaderHeight = UITableView.automaticDimension
+        tableView.estimatedSectionHeaderHeight = 30
+        tableView.estimatedRowHeight = 72
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(CountryTableCell.self, forCellReuseIdentifier: CountryTableCell.identifier)
+        tableView.register(ContinentHeaderView.self, forHeaderFooterViewReuseIdentifier: ContinentHeaderView.identifier)
         return tableView
     }()
     
@@ -36,16 +40,15 @@ class CountriesListViewController: UIViewController {
         view.backgroundColor = .white
         title = "World Countries"
         self.navigationItem.backButtonTitle = ""
-        
+        tableView.isSkeletonable = true
         view.addSubview(tableView)
-
         tableView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 }
 
-extension CountriesListViewController: UITableViewDelegate, UITableViewDataSource {
+extension CountriesListViewController: UITableViewDelegate, UITableViewDataSource, SkeletonTableViewDataSource, SkeletonTableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return countriesByContinent.numberOfContinents
     }
@@ -59,7 +62,6 @@ extension CountriesListViewController: UITableViewDelegate, UITableViewDataSourc
               let country = countriesByContinent.country(at: indexPath) else {
             return UITableViewCell()
         }
-        
         cell.configure(country: country)
         cell.onLearnMoreTapped = { [weak self] in
             let countryDetailsVC = CountryDetailsViewController(countryCode: country.countryCode ?? "KZ")
@@ -72,31 +74,41 @@ extension CountriesListViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CountryTableCell else { return }
+        tableView.beginUpdates()
         UIView.animate(withDuration: 0.3, animations: {
             cell.isExpanded.toggle()
             cell.updateView()
-            tableView.beginUpdates()
         })
         tableView.endUpdates()
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "ContinentHeaderView") as? ContinentHeaderView ?? ContinentHeaderView(reuseIdentifier: "ContinentHeaderView")
         let continent = countriesByContinent.continentName(at: section)
         headerView.configure(with: continent)
         return headerView
     }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return CountryTableCell.identifier
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UITableView, identifierForHeaderInSection section: Int) -> ReusableHeaderFooterIdentifier? {
+        return ContinentHeaderView.identifier
+    }
 }
 
 extension CountriesListViewController {
     private func fetchCountries() {
+        tableView.showAnimatedGradientSkeleton()
+        
         networkManager.getAllCountries { [weak self] countries in
             self?.countriesByContinent.updateWith(countries: countries)
+            
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
+                self?.tableView.hideSkeleton()
             }
         }
     }
 }
-
-
