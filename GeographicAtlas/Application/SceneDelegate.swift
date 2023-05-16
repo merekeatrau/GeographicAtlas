@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navController = UINavigationController(rootViewController: CountriesListViewController())
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.systemGray6.withAlphaComponent(0.5)
+        appearance.backgroundColor = UIColor.customColor1
         appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         navController.navigationBar.standardAppearance = appearance
         navController.navigationBar.scrollEdgeAppearance = appearance

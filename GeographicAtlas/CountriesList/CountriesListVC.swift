@@ -49,6 +49,7 @@ class CountriesListViewController: UIViewController {
 }
 
 extension CountriesListViewController: UITableViewDelegate, UITableViewDataSource, SkeletonTableViewDataSource, SkeletonTableViewDelegate {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return countriesByContinent.numberOfContinents
     }

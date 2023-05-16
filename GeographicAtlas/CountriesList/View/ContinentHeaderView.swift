@@ -45,12 +45,12 @@ class ContinentHeaderView: UITableViewHeaderFooterView {
         contentView.addSubview(container)
         container.addSubview(label)
         container.snp.makeConstraints {
-            $0.trailing.leading.equalToSuperview().inset(20)
+            $0.left.right.equalToSuperview().inset(16)
             $0.top.bottom.equalToSuperview().inset(0)
         }
         
         label.snp.makeConstraints {
-            $0.leading.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().offset(8)
             $0.centerY.equalToSuperview()
         }
     }
@@ -61,5 +61,3 @@ class ContinentHeaderView: UITableViewHeaderFooterView {
         label.attributedText = attributedString
     }
 }
-
-

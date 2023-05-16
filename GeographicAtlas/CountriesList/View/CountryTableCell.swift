@@ -33,7 +33,7 @@ class CountryTableCell: UITableViewCell {
     
     private let mainContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemGray6
+        view.backgroundColor = .customColor2
         view.layer.cornerRadius = 12
         return view
     }()
@@ -67,13 +67,13 @@ class CountryTableCell: UITableViewCell {
         label.numberOfLines = 1
         label.text = "KazakhstanKazakhstan"
         label.font = .systemFont(ofSize: 13, weight: .regular)
-        label.textColor = .systemGray
+        label.textColor = .customColor3
         return label
     }()
     
     private let expandButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setImage(UIImage(named: "arrow_up"), for: .normal)
+        button.setImage(UIImage(named: "arrow_down"), for: .normal)
         button.tintColor = .systemGray6
         return button
     }()
@@ -148,11 +148,18 @@ class CountryTableCell: UITableViewCell {
 }
 
 extension CountryTableCell {
+    
+    func updateView() {
+        additionalStackView.isHidden = !isExpanded
+        learnMoreButton.isHidden = !isExpanded
+        expandButton.setImage(UIImage(named: isExpanded ? "arrow_up" : "arrow_down"), for: .normal)
+    }
+    
     private func createLabel(text: String) -> UILabel {
         let label = UILabel()
         label.text = text
         label.font = .systemFont(ofSize: 15, weight: .regular)
-        label.textColor = .systemGray
+        label.textColor = .customColor3
         label.numberOfLines = 1
         return label
     }
@@ -170,15 +177,13 @@ extension CountryTableCell {
         
         let name = country.name?.common ?? "N/A"
         let capitalString = country.capital?.joined(separator: ", ") ?? "N/A"
-        let population = country.population != nil ? formatNumber(country.population!) + " mln" : "N/A"
-        let area = country.area != nil ? formatNumber(Int(country.area!)) + " mln km²" : "N/A"
+        let population = formatNumber(country.population ?? 0) + " mln"
+        let area = formatNumber(Int(country.area ?? 0)) + " mln km²"
         
-        let currencyList = country.currencies?.compactMap { (key, currency) -> String? in
-            if let currencyName = currency.name, let currencySymbol = currency.symbol {
-                return "\(currencyName) (\(currencySymbol))"
-            }
-            return nil
-        }.joined(separator: ", ") ?? "N/A"
+        let currencyList = country.currencies?
+            .compactMap { $0.value }
+            .compactMap { "\($0.name ?? "N/A") (\($0.symbol ?? ""))" }
+            .joined(separator: ", ") ?? "N/A"
         
         countryLabel.text = name
         capitalLabel.text = capitalString
@@ -208,11 +213,5 @@ extension CountryTableCell {
             }
         }
         expandButton.tintColor = .black
-    }
-    
-    func updateView() {
-        additionalStackView.isHidden = !isExpanded
-        learnMoreButton.isHidden = !isExpanded
-        expandButton.setImage(UIImage(named: isExpanded ? "arrow_down" : "arrow_up"), for: .normal)
     }
 }

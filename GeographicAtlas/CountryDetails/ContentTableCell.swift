@@ -20,7 +20,7 @@ class ContentTableCell: UITableViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .systemGray
+        label.textColor = .customColor3
         label.font = .systemFont(ofSize: 15, weight: .regular)
         return label
     }()
