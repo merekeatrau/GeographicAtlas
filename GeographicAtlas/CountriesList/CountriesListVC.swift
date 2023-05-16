@@ -19,7 +19,6 @@ class CountriesListViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         tableView.sectionHeaderHeight = UITableView.automaticDimension
-        tableView.estimatedSectionHeaderHeight = 30
         tableView.estimatedRowHeight = 72
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .clear
@@ -40,6 +39,7 @@ class CountriesListViewController: UIViewController {
         view.backgroundColor = .white
         title = "World Countries"
         self.navigationItem.backButtonTitle = ""
+        
         tableView.isSkeletonable = true
         view.addSubview(tableView)
         tableView.snp.makeConstraints {
@@ -74,11 +74,11 @@ extension CountriesListViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CountryTableCell else { return }
-        tableView.beginUpdates()
-        UIView.animate(withDuration: 0.3, animations: {
-            cell.isExpanded.toggle()
+        cell.isExpanded.toggle()
+        UIView.transition(with: cell, duration: 0.3, options: .transitionCrossDissolve, animations: {
             cell.updateView()
         })
+        tableView.beginUpdates()
         tableView.endUpdates()
     }
     

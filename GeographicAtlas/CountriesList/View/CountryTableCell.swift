@@ -20,6 +20,13 @@ class CountryTableCell: UITableViewCell {
         super.prepareForReuse()
         isExpanded = false
         updateView()
+        
+        flagImageView.kf.cancelDownloadTask()
+        flagImageView.image = nil
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        return UIView.layoutFittingExpandedSize
     }
     
     var isExpanded: Bool = false
@@ -105,15 +112,10 @@ class CountryTableCell: UITableViewCell {
     
     private func setupSkeletonable() {
         isSkeletonable = true
-        mainContainer.isSkeletonable = true
-        mainStackView.isSkeletonable = true
-        headStackView.isSkeletonable = true
-        textStackView.isSkeletonable = true
-        flagImageView.isSkeletonable = true
-        expandButton.isSkeletonable = true
-        capitalLabel.isSkeletonable = true
-        countryLabel.isSkeletonable = true
-        
+        [mainContainer, mainStackView, headStackView, textStackView, flagImageView, expandButton, capitalLabel, countryLabel].forEach {
+            $0.isSkeletonable = true
+        }
+
         additionalStackView.isSkeletonable = false
         learnMoreButton.isSkeletonable = false
     }
@@ -134,7 +136,7 @@ class CountryTableCell: UITableViewCell {
             $0.left.right.equalToSuperview().inset(16)
             $0.top.bottom.equalToSuperview().inset(6)
         }
-        
+    
         mainStackView.snp.makeConstraints {
             $0.edges.equalToSuperview().inset(12)
         }
@@ -180,16 +182,30 @@ extension CountryTableCell {
         
         countryLabel.text = name
         capitalLabel.text = capitalString
-        labels[0].text = "Population: \(population)"
-        labels[1].text = "Area: \(area)"
-        labels[2].text = "Currencies: \(currencyList)"
-        
+        labels[0].attributedText = createAttributedText(title: "Population: ", detail: population)
+        labels[1].attributedText = createAttributedText(title: "Area: ", detail: area)
+        labels[2].attributedText = createAttributedText(title: "Currencies: ", detail: currencyList)
+
         if let pngFlagUrlString = country.flags?.png,
            let pngFlagUrl = URL(string: pngFlagUrlString) {
-            flagImageView.kf.setImage(with: pngFlagUrl)
-        } else if let svgFlagUrlString = country.flags?.svg,
-                  let svgFlagUrl = URL(string: svgFlagUrlString) {
-            flagImageView.kf.setImage(with: svgFlagUrl)
+            let cacheKey = "\(pngFlagUrl)"
+            let options: KingfisherOptionsInfo = [.transition(.fade(0.2))]
+            
+            if let image = ImageCache.default.retrieveImageInMemoryCache(forKey: cacheKey) {
+                flagImageView.image = image
+            } else {
+                flagImageView.kf.setImage(with: pngFlagUrl, placeholder: nil, options: options) { [weak self] result in
+                    guard let self = self else { return }
+                    
+                    switch result {
+                    case .success(let value):
+                        ImageCache.default.store(value.image, forKey: cacheKey)
+                        self.flagImageView.image = value.image
+                    case .failure(let error):
+                        print("Image downloading error: \(error)")
+                    }
+                }
+            }
         }
         expandButton.tintColor = .black
     }

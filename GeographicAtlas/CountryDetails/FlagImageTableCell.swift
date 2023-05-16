@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class FlagImageTableCell: UITableViewCell {
 
@@ -44,11 +45,28 @@ class FlagImageTableCell: UITableViewCell {
     
     func configure(details: CountryDetails?) {
         if let pngFlagUrlString = details?.flags?.png,
-        let pngFlagUrl = URL(string: pngFlagUrlString) {
-            flagImageView.kf.setImage(with: pngFlagUrl)
+           let pngFlagUrl = URL(string: pngFlagUrlString) {
+            let cacheKey = "\(pngFlagUrl)"
+            flagImageView.kf.setImage(with: pngFlagUrl, placeholder: nil, options: [.transition(.fade(0.2))]) { result in
+                switch result {
+                case .success(_):
+                   break
+                case .failure(let error):
+                    print("Image loading error: \(error)")
+                }
+            }
         } else if let svgFlagUrlString = details?.flags?.svg,
-                let svgFlagUrl = URL(string: svgFlagUrlString) {
-            flagImageView.kf.setImage(with: svgFlagUrl)
+                  let svgFlagUrl = URL(string: svgFlagUrlString) {
+            let cacheKey = "\(svgFlagUrl)"
+            flagImageView.kf.setImage(with: svgFlagUrl, placeholder: nil, options: [.transition(.fade(0.2))]) { result in
+                switch result {
+                case .success(_):
+                    break
+                case .failure(let error):
+                    print("Image loading error: \(error)")
+                }
+            }
         }
     }
+
 }
