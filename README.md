@@ -17,4 +17,6 @@ The "Geographic atlas" iPhone application allows users to explore information ab
 
 4. **Wrote safe code, leave no possibility of crashes**
 
-<img src="preview.gif" width="300">
+## App preview
+
+<img src="preview.gif" width="300" alt="Loading...">
